@@ -11,15 +11,25 @@ import UIKit
 
 enum Map {
     
-    enum Map {
+    enum Search {
         
         struct Request {
+            
+            var ll: String?
+            var near: String?
+            var radius: Int?
+            var query: String?
+            var limit: Int?
         }
         
         struct Response {
+            
+            var venueList: [Venue]
         }
         
         struct ViewModel {
+            
+            var venueList: [Venue]
         }
     }
 }

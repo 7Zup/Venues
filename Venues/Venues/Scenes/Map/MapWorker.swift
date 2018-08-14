@@ -10,9 +10,16 @@ import Foundation
 import UIKit
 
 protocol MapWorkerLogic {
+    
+    func getVenueList(urlParams: [String: String], completionHandler: @escaping ([Venue?]) -> Void, errorHandler: @escaping (Error) -> Void)
 }
 
 class MapWorker: MapWorkerLogic {
     
     var interactor: MapBusinessLogic?
+    
+    func getVenueList(urlParams: [String: String], completionHandler: @escaping ([Venue?]) -> Void, errorHandler: @escaping (Error) -> Void) {
+        
+        APIManager.shared.requestArray(requestType: .get, urlParams: urlParams, route: "/search", completionHandler: completionHandler, errorHandler: errorHandler)
+    }
 }

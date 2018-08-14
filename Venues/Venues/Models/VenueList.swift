@@ -10,7 +10,7 @@ import Foundation
 
 struct VenueList: Codable {
     
-    var venueList: [Venue]?
+    var venueList: [Venue?]
     
     enum CodingKeys: String, CodingKey {
         

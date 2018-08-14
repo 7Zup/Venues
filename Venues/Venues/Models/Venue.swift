@@ -14,7 +14,7 @@ struct Venue: Codable {
     var name: String?
     var contact: Contact?
     var location: Location?
-    var categories: [Category]?
+    var categories: [Category?]
     var verified: Bool?
     var url: String?
     var hours: Hours?

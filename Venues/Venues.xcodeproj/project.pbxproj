@@ -27,6 +27,7 @@
 		AA4FFC5A2122D4080007A08B /* DetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC592122D4080007A08B /* DetailsWorker.swift */; };
 		AA4FFC5C2122D4140007A08B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC5B2122D4140007A08B /* DetailsPresenter.swift */; };
 		AA4FFC5E2122D41C0007A08B /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC5D2122D41C0007A08B /* DetailsRouter.swift */; };
+		AA4FFC622123213D0007A08B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC612123213D0007A08B /* APIManager.swift */; };
 		AA5E57322121BB0B00BA5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E57312121BB0B00BA5449 /* AppDelegate.swift */; };
 		AA5E57372121BB0B00BA5449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57352121BB0B00BA5449 /* Main.storyboard */; };
 		AA5E57392121BB0F00BA5449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57382121BB0F00BA5449 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		AA4FFC592122D4080007A08B /* DetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWorker.swift; sourceTree = "<group>"; };
 		AA4FFC5B2122D4140007A08B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		AA4FFC5D2122D41C0007A08B /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		AA4FFC612123213D0007A08B /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		AA5E572E2121BB0B00BA5449 /* Venues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5E57312121BB0B00BA5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA5E57362121BB0B00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		AA4FFC60212321210007A08B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFC612123213D0007A08B /* APIManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		AA5E57252121BB0B00BA5449 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 		AA5E57302121BB0B00BA5449 /* Venues */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFC60212321210007A08B /* API */,
 				AA4FFC332122C4580007A08B /* Models */,
 				AA4FFC342122C4630007A08B /* Views */,
 				AA4FFC352122C46C0007A08B /* Scenes */,
@@ -273,9 +284,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Venues/Pods-Venues-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -313,6 +327,7 @@
 				AA4FFC4E2122D33D0007A08B /* MapWorker.swift in Sources */,
 				AA4FFC5A2122D4080007A08B /* DetailsWorker.swift in Sources */,
 				AA4FFC582122D3FC0007A08B /* DetailsInteractor.swift in Sources */,
+				AA4FFC622123213D0007A08B /* APIManager.swift in Sources */,
 				AA4FFC3B2122CDE60007A08B /* Contact.swift in Sources */,
 				AA4FFC4A2122D30A0007A08B /* MapViewController.swift in Sources */,
 				AA4FFC3F2122CFBF0007A08B /* Category.swift in Sources */,
@@ -474,10 +489,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -493,10 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
