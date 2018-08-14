@@ -8,6 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		9E794C782175FA83F1291D13 /* Pods_Venues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */; };
+		AA4FFC392122CBAB0007A08B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC382122CBAB0007A08B /* Venue.swift */; };
+		AA4FFC3B2122CDE60007A08B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3A2122CDE60007A08B /* Contact.swift */; };
+		AA4FFC3D2122CED60007A08B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3C2122CED60007A08B /* Location.swift */; };
+		AA4FFC3F2122CFBF0007A08B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3E2122CFBF0007A08B /* Category.swift */; };
+		AA4FFC422122D0800007A08B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC412122D0800007A08B /* Icon.swift */; };
+		AA4FFC442122D0DA0007A08B /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC432122D0DA0007A08B /* Hours.swift */; };
+		AA4FFC462122D1640007A08B /* VenueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC452122D1640007A08B /* VenueList.swift */; };
+		AA4FFC482122D2F80007A08B /* MapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC472122D2F80007A08B /* MapModels.swift */; };
+		AA4FFC4A2122D30A0007A08B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC492122D30A0007A08B /* MapViewController.swift */; };
+		AA4FFC4C2122D32A0007A08B /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC4B2122D32A0007A08B /* MapInteractor.swift */; };
+		AA4FFC4E2122D33D0007A08B /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC4D2122D33D0007A08B /* MapWorker.swift */; };
+		AA4FFC502122D3530007A08B /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC4F2122D3530007A08B /* MapPresenter.swift */; };
+		AA4FFC522122D36C0007A08B /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC512122D36C0007A08B /* MapRouter.swift */; };
+		AA4FFC542122D3E00007A08B /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC532122D3E00007A08B /* DetailsModel.swift */; };
+		AA4FFC562122D3ED0007A08B /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC552122D3ED0007A08B /* DetailsViewController.swift */; };
+		AA4FFC582122D3FC0007A08B /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC572122D3FC0007A08B /* DetailsInteractor.swift */; };
+		AA4FFC5A2122D4080007A08B /* DetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC592122D4080007A08B /* DetailsWorker.swift */; };
+		AA4FFC5C2122D4140007A08B /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC5B2122D4140007A08B /* DetailsPresenter.swift */; };
+		AA4FFC5E2122D41C0007A08B /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC5D2122D41C0007A08B /* DetailsRouter.swift */; };
 		AA5E57322121BB0B00BA5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E57312121BB0B00BA5449 /* AppDelegate.swift */; };
 		AA5E57372121BB0B00BA5449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57352121BB0B00BA5449 /* Main.storyboard */; };
 		AA5E57392121BB0F00BA5449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57382121BB0F00BA5449 /* Assets.xcassets */; };
@@ -17,6 +36,25 @@
 /* Begin PBXFileReference section */
 		356EEBAFB954359785DDF68B /* Pods-Venues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venues.release.xcconfig"; path = "Pods/Target Support Files/Pods-Venues/Pods-Venues.release.xcconfig"; sourceTree = "<group>"; };
 		4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Venues.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA4FFC382122CBAB0007A08B /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		AA4FFC3A2122CDE60007A08B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		AA4FFC3C2122CED60007A08B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		AA4FFC3E2122CFBF0007A08B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		AA4FFC412122D0800007A08B /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		AA4FFC432122D0DA0007A08B /* Hours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		AA4FFC452122D1640007A08B /* VenueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueList.swift; sourceTree = "<group>"; };
+		AA4FFC472122D2F80007A08B /* MapModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModels.swift; sourceTree = "<group>"; };
+		AA4FFC492122D30A0007A08B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AA4FFC4B2122D32A0007A08B /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		AA4FFC4D2122D33D0007A08B /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
+		AA4FFC4F2122D3530007A08B /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		AA4FFC512122D36C0007A08B /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		AA4FFC532122D3E00007A08B /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		AA4FFC552122D3ED0007A08B /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		AA4FFC572122D3FC0007A08B /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		AA4FFC592122D4080007A08B /* DetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWorker.swift; sourceTree = "<group>"; };
+		AA4FFC5B2122D4140007A08B /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		AA4FFC5D2122D41C0007A08B /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		AA5E572E2121BB0B00BA5449 /* Venues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5E57312121BB0B00BA5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA5E57362121BB0B00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,6 +85,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		AA4FFC332122C4580007A08B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFC452122D1640007A08B /* VenueList.swift */,
+				AA4FFC382122CBAB0007A08B /* Venue.swift */,
+				AA4FFC3A2122CDE60007A08B /* Contact.swift */,
+				AA4FFC3C2122CED60007A08B /* Location.swift */,
+				AA4FFC432122D0DA0007A08B /* Hours.swift */,
+				AA4FFC3E2122CFBF0007A08B /* Category.swift */,
+				AA4FFC412122D0800007A08B /* Icon.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA4FFC342122C4630007A08B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA5E57352121BB0B00BA5449 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA4FFC352122C46C0007A08B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFC362122C9D00007A08B /* Map */,
+				AA4FFC372122C9E90007A08B /* Details */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AA4FFC362122C9D00007A08B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFC472122D2F80007A08B /* MapModels.swift */,
+				AA4FFC492122D30A0007A08B /* MapViewController.swift */,
+				AA4FFC4B2122D32A0007A08B /* MapInteractor.swift */,
+				AA4FFC4D2122D33D0007A08B /* MapWorker.swift */,
+				AA4FFC4F2122D3530007A08B /* MapPresenter.swift */,
+				AA4FFC512122D36C0007A08B /* MapRouter.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		AA4FFC372122C9E90007A08B /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				AA4FFC532122D3E00007A08B /* DetailsModel.swift */,
+				AA4FFC552122D3ED0007A08B /* DetailsViewController.swift */,
+				AA4FFC572122D3FC0007A08B /* DetailsInteractor.swift */,
+				AA4FFC592122D4080007A08B /* DetailsWorker.swift */,
+				AA4FFC5B2122D4140007A08B /* DetailsPresenter.swift */,
+				AA4FFC5D2122D41C0007A08B /* DetailsRouter.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		AA5E57252121BB0B00BA5449 = {
 			isa = PBXGroup;
 			children = (
@@ -68,8 +163,10 @@
 		AA5E57302121BB0B00BA5449 /* Venues */ = {
 			isa = PBXGroup;
 			children = (
+				AA4FFC332122C4580007A08B /* Models */,
+				AA4FFC342122C4630007A08B /* Views */,
+				AA4FFC352122C46C0007A08B /* Scenes */,
 				AA5E57312121BB0B00BA5449 /* AppDelegate.swift */,
-				AA5E57352121BB0B00BA5449 /* Main.storyboard */,
 				AA5E57382121BB0F00BA5449 /* Assets.xcassets */,
 				AA5E573A2121BB0F00BA5449 /* LaunchScreen.storyboard */,
 				AA5E573D2121BB0F00BA5449 /* Info.plist */,
@@ -210,7 +307,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4FFC422122D0800007A08B /* Icon.swift in Sources */,
+				AA4FFC462122D1640007A08B /* VenueList.swift in Sources */,
+				AA4FFC502122D3530007A08B /* MapPresenter.swift in Sources */,
+				AA4FFC4E2122D33D0007A08B /* MapWorker.swift in Sources */,
+				AA4FFC5A2122D4080007A08B /* DetailsWorker.swift in Sources */,
+				AA4FFC582122D3FC0007A08B /* DetailsInteractor.swift in Sources */,
+				AA4FFC3B2122CDE60007A08B /* Contact.swift in Sources */,
+				AA4FFC4A2122D30A0007A08B /* MapViewController.swift in Sources */,
+				AA4FFC3F2122CFBF0007A08B /* Category.swift in Sources */,
+				AA4FFC5C2122D4140007A08B /* DetailsPresenter.swift in Sources */,
 				AA5E57322121BB0B00BA5449 /* AppDelegate.swift in Sources */,
+				AA4FFC4C2122D32A0007A08B /* MapInteractor.swift in Sources */,
+				AA4FFC482122D2F80007A08B /* MapModels.swift in Sources */,
+				AA4FFC5E2122D41C0007A08B /* DetailsRouter.swift in Sources */,
+				AA4FFC442122D0DA0007A08B /* Hours.swift in Sources */,
+				AA4FFC562122D3ED0007A08B /* DetailsViewController.swift in Sources */,
+				AA4FFC522122D36C0007A08B /* MapRouter.swift in Sources */,
+				AA4FFC3D2122CED60007A08B /* Location.swift in Sources */,
+				AA4FFC542122D3E00007A08B /* DetailsModel.swift in Sources */,
+				AA4FFC392122CBAB0007A08B /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,7 +474,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -374,7 +493,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
