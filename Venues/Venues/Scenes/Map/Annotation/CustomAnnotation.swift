@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SDWebImage
+import Cluster
 
 class CustomAnnotation: NSObject, MKAnnotation {
     
@@ -17,11 +18,6 @@ class CustomAnnotation: NSObject, MKAnnotation {
     var imageView: UIImageView!
     var coordinate: CLLocationCoordinate2D
     var image: UIImage?
-    
-    var imageForAnnotationView: UIImage? {
-        
-        return imageView.image
-    }
     
     init(id: String, thumbnailUrl: String, coordinate: CLLocationCoordinate2D, title: String = "") {
         
@@ -34,10 +30,12 @@ class CustomAnnotation: NSObject, MKAnnotation {
         if let image = try? UIImage(withContentsOfUrl: URL(string: thumbnailUrl)!) {
             self.image = image
         } else {
-            image = UIImage(named: "pin")
+            self.image = nil
         }
     }
 }
+
+// UTILS -> TO BE REMOVED
 
 extension UIImage {
     
@@ -55,7 +53,7 @@ extension UIImage {
             let topWidth = size.width / 3
             let topHeight = size.height / 3
             let topX = (size.width / 2.0) - (topWidth / 2.0)
-            let topY = 50//(size.height / 2.0) - (topHeight / 2.0) + 18
+            let topY = 35//(size.height / 2.0) - (topHeight / 2.0) + 18
             
             image.draw(in: CGRect(x: topX, y: CGFloat(topY), width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
         }

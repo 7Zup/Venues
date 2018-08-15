@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import Cluster
 
 protocol MapDisplayLogic: class {
     
@@ -23,6 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     // Map
     @IBOutlet var mapView: MKMapView!
     var locationManager: CLLocationManager!
+    let clusterManager = ClusterManager()
     
     // MARK: Object lifecycle
     
@@ -87,6 +89,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         initLocation()
         initMapView()
+        initClusterManager()
+        
+        self.updatePins()
     }
     
     func centerMapOnLocation(location: CLLocation) {
@@ -94,6 +99,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let regionRadius: CLLocationDistance = 250
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func initClusterManager() {
+        
+        self.clusterManager.minCountForClustering = 2
+        self.clusterManager.maxZoomLevel = 16
     }
     
     func initMapView() {
@@ -139,65 +150,117 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func displayPinList(viewModel: Map.Search.ViewModel) {
         
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.clusterManager.removeAll()
+        
         for pin in viewModel.pinList {
-            
-//            "https://api.adorable.io/avatars/285/abott@adorable.png"
             
             let annotation = CustomAnnotation(id: "id", thumbnailUrl: pin.icon, coordinate: CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng))
             
-//            annotation.coordinate = CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng)
-
-            mapView.addAnnotation(annotation)
+            clusterManager.add(annotation)
+        }
+        
+        clusterManager.reload(mapView: mapView) { finished in
         }
     }
     
     // MARK: - MapView Delegate
     
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        views.forEach { $0.alpha = 0 }
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [], animations: {
+            views.forEach { $0.alpha = 1 }
+        }, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation else { return }
+        
+        if let cluster = annotation as? ClusterAnnotation {
+            var zoomRect = MKMapRectNull
+            for annotation in cluster.annotations {
+                let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+                let pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0)
+                if MKMapRectIsNull(zoomRect) {
+                    zoomRect = pointRect
+                } else {
+                    zoomRect = MKMapRectUnion(zoomRect, pointRect)
+                }
+            }
+            mapView.setVisibleMapRect(zoomRect, animated: true)
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let annotation = annotation as? CustomAnnotation else { return nil }
-     
-        // Better to make this class property
-        let annotationIdentifier = "AnnotationIdentifier"
-        
-        var annotationView: MKAnnotationView?
-        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
-
-            annotationView = dequeuedAnnotationView
-            annotationView?.annotation = annotation
-        }
-        else {
-
-            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            annotationView = av
-        }
-        
-        if let annotationView = annotationView {
-
-            annotationView.canShowCallout = true
-
-            // Resize image
-            var size = CGSize(width: 50, height: 50)
-            UIGraphicsBeginImageContext(size)
-            annotation.image!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            let categorySized = UIGraphicsGetImageFromCurrentImageContext()
+        if let annotation = annotation as? ClusterAnnotation {
             
-//            size = CGSize(width: 50, height: 50)
-//            UIImage(named: "pin")!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
-//            let pinSized = UIGraphicsGetImageFromCurrentImageContext()
+            let identifier = "Cluster"
+            guard let style = annotation.style else {
+                return nil
+            }
+
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            if let view = view as? ClusterAnnotationView {
+                view.annotation = annotation
+                view.style = style
+                view.image = UIImage(named: "pin")
+                view.configure()
+            } else {
+                view = ClusterAnnotationView(annotation: annotation, reuseIdentifier: identifier, style: style)
+            }
+            return view
+        } else {
             
-            annotationView.image = UIImage(named: "pin")!.imageOverlayingImages([categorySized!])
+            guard let annotation = annotation as? CustomAnnotation else {
+                
+                return nil
+            }
             
-//             = resizedImage
+            // Better to make this class property
+            let identifier = "Pin"
+            
+            var annotationView: MKAnnotationView?
+            if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) {
+                
+                annotationView = dequeuedAnnotationView
+                annotationView?.annotation = annotation
+            }
+            else {
+                
+                let av = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+                annotationView = av
+            }
+            
+            if let annotationView = annotationView {
+                
+                annotationView.canShowCallout = true
+                
+                // Resize image
+                let size = CGSize(width: 30, height: 30)
+                UIGraphicsBeginImageContext(size)
+                
+                guard let annotImage = annotation.image else { return nil }
+                annotImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+                let categorySized = UIGraphicsGetImageFromCurrentImageContext()
+                
+                annotationView.image = UIImage(named: "pin")!.imageOverlayingImages([categorySized!])
+            }
+            
+            return annotationView
         }
         
-        return annotationView
+        
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
-        self.mapView.removeAnnotations(mapView.annotations)
+        self.updatePins()
+    }
+    
+    func updatePins() {
+        
         let center = mapView.centerCoordinate
         
         // TODO - Display when the "Refresh button" or search again is used
@@ -205,6 +268,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Make research regarding the center of the map
         self.interactor?.getVenueList(ll: "\(center.latitude),\(center.longitude)", radius: 250)
     }
+    
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//
+//        self.mapView.removeAnnotations(mapView.annotations)
+//        let center = mapView.centerCoordinate
+//
+//        // TODO - Display when the "Refresh button" or search again is used
+//
+//        // Make research regarding the center of the map
+//        self.interactor?.getVenueList(ll: "\(center.latitude),\(center.longitude)", radius: 250)
+//
+//        clusterManager.reload(mapView: mapView)
+//    }
 }
 
 extension MKMapView {
