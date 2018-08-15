@@ -11,15 +11,15 @@ import UIKit
 
 protocol MapWorkerLogic {
     
-    func getVenueList(urlParams: [String: String], completionHandler: @escaping ([Venue?]) -> Void, errorHandler: @escaping (Error) -> Void)
+    func getVenueList(request: Map.Search.Request, completionHandler: @escaping (VenueListResponse?) -> Void, errorHandler: @escaping (Error) -> Void)
 }
 
 class MapWorker: MapWorkerLogic {
     
     var interactor: MapBusinessLogic?
     
-    func getVenueList(urlParams: [String: String], completionHandler: @escaping ([Venue?]) -> Void, errorHandler: @escaping (Error) -> Void) {
+    func getVenueList(request: Map.Search.Request, completionHandler: @escaping (VenueListResponse?) -> Void, errorHandler: @escaping (Error) -> Void) {
         
-        APIManager.shared.requestArray(requestType: .get, urlParams: urlParams, route: "/search", completionHandler: completionHandler, errorHandler: errorHandler)
+        APIManager.shared.request(requestType: .get, urlParams: request.urlParams, route: "/search", completionHandler: completionHandler, errorHandler: errorHandler)
     }
 }

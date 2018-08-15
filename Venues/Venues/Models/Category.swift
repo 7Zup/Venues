@@ -16,14 +16,4 @@ struct Category: Codable {
     var shortName: String?
     var icon: Icon?
     var primary: Bool?
-   
-    enum CodingKeys: String, CodingKey {
-        
-        case id
-        case name
-        case pluralName
-        case shortName
-        case icon
-        case primary
-    }
 }

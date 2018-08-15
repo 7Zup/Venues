@@ -10,11 +10,7 @@ import Foundation
 import UIKit
 
 protocol MapBusinessLogic {
-//    var ll: String?
-//    var near: String?
-//    var radius: Int?
-//    var query: String?
-//    var limit: Int?
+
     func getVenueList(ll: String, radius: Int)
 }
 
@@ -38,14 +34,19 @@ class MapInteractor: MapBusinessLogic, MapData {
         urlParams["radius"] = "\(radius)"
         urlParams["limit"] = "\(10)"
         
-        self.worker?.getVenueList(urlParams: urlParams, completionHandler: venueListCompletionHandler, errorHandler: venuListErrorHandler)
+        self.worker?.getVenueList(request: Map.Search.Request(urlParams: urlParams), completionHandler: venueListCompletionHandler, errorHandler: venuListErrorHandler)
     }
     
-    func venueListCompletionHandler(venueList: [Venue?]) {
-        
+    func venueListCompletionHandler(response: VenueListResponse?) {
+
+        if let venues = response?.response, let venueList = venues.venueList {
+            
+            self.presenter?.presentVenueList(response: Map.Search.Response(venueList: venueList))
+        }
     }
     
     func venuListErrorHandler(error: Error) {
         
+        print(error)
     }
 }

@@ -17,15 +17,4 @@ struct Contact: Codable {
     var facebook: String?
     var facebookUsername: String?
     var facebookName: String?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case phone
-        case formattedPhone
-        case twitter
-        case instagram
-        case facebook
-        case facebookUsername
-        case facebookName
-    }
 }

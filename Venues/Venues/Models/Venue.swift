@@ -14,22 +14,9 @@ struct Venue: Codable {
     var name: String?
     var contact: Contact?
     var location: Location?
-    var categories: [Category?]
+    var categories: [Category]?
     var verified: Bool?
     var url: String?
     var hours: Hours?
     var rating: Float?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case id
-        case name
-        case contact
-        case location
-        case categories
-        case verified
-        case url
-        case hours
-        case rating
-    }
 }

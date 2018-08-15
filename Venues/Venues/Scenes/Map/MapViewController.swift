@@ -11,6 +11,8 @@ import UIKit
 import MapKit
 
 protocol MapDisplayLogic: class {
+    
+    func displayPinList(viewModel: Map.Search.ViewModel)
 }
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapDisplayLogic {
@@ -108,8 +110,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         locationManager.requestAlwaysAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
+            
             locationManager.startUpdatingLocation()
-//            locationManager.startUpdatingHeading()
         }
     }
     
@@ -125,7 +127,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         manager.stopUpdatingLocation()
         
         print("user ll = \(userLocation.coordinate.latitude) | \(userLocation.coordinate.longitude)")
-//        mapView.setCenter(userLocation.coordinate, animated: true)
         centerMapOnLocation(location: userLocation)
     }
     
@@ -134,14 +135,74 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print("Error \(error)")
     }
     
+    // MARK: - Display Logic
+    
+    func displayPinList(viewModel: Map.Search.ViewModel) {
+        
+        for pin in viewModel.pinList {
+            
+//            "https://api.adorable.io/avatars/285/abott@adorable.png"
+            
+            let annotation = CustomAnnotation(id: "id", thumbnailUrl: pin.icon, coordinate: CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng))
+            
+//            annotation.coordinate = CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng)
+
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
     // MARK: - MapView Delegate
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard let annotation = annotation as? CustomAnnotation else { return nil }
+     
+        // Better to make this class property
+        let annotationIdentifier = "AnnotationIdentifier"
+        
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotationView = av
+        }
+        
+        if let annotationView = annotationView {
+
+            annotationView.canShowCallout = true
+
+            // Resize image
+            var size = CGSize(width: 50, height: 50)
+            UIGraphicsBeginImageContext(size)
+            annotation.image!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+            let categorySized = UIGraphicsGetImageFromCurrentImageContext()
+            
+//            size = CGSize(width: 50, height: 50)
+//            UIImage(named: "pin")!.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+//            let pinSized = UIGraphicsGetImageFromCurrentImageContext()
+            
+            annotationView.image = UIImage(named: "pin")!.imageOverlayingImages([categorySized!])
+            
+//             = resizedImage
+        }
+        
+        return annotationView
+    }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         
-        var center = mapView.centerCoordinate
-        print("map ll = \(center.latitude) | \(center.longitude)")
+        self.mapView.removeAnnotations(mapView.annotations)
+        let center = mapView.centerCoordinate
         
-        // Display the "Refresh button" or search again
+        // TODO - Display when the "Refresh button" or search again is used
+        
+        // Make research regarding the center of the map
         self.interactor?.getVenueList(ll: "\(center.latitude),\(center.longitude)", radius: 250)
     }
 }

@@ -12,10 +12,4 @@ struct Hours: Codable {
     
     var status: String?
     var isOpen: String?
-
-    enum CodingKeys: String, CodingKey {
-        
-        case status
-        case isOpen
-    }
 }

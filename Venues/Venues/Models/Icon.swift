@@ -12,10 +12,4 @@ struct Icon: Codable {
     
     var prefix: String?
     var suffix: String?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case prefix
-        case suffix
-    }
 }

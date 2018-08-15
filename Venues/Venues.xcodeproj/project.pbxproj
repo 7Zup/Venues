@@ -30,8 +30,9 @@
 		AA4FFC622123213D0007A08B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC612123213D0007A08B /* APIManager.swift */; };
 		AA5E57322121BB0B00BA5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E57312121BB0B00BA5449 /* AppDelegate.swift */; };
 		AA5E57372121BB0B00BA5449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57352121BB0B00BA5449 /* Main.storyboard */; };
-		AA5E57392121BB0F00BA5449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57382121BB0F00BA5449 /* Assets.xcassets */; };
 		AA5E573C2121BB0F00BA5449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E573A2121BB0F00BA5449 /* LaunchScreen.storyboard */; };
+		E7D5E1012124880700261725 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5E1002124880700261725 /* CustomAnnotation.swift */; };
+		E7D5E10321249EB200261725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5E10221249EB200261725 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,9 +61,10 @@
 		AA5E572E2121BB0B00BA5449 /* Venues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Venues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5E57312121BB0B00BA5449 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA5E57362121BB0B00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AA5E57382121BB0F00BA5449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA5E573B2121BB0F00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA5E573D2121BB0F00BA5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7D5E1002124880700261725 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		E7D5E10221249EB200261725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F92938F3C3418B7F6092FA1F /* Pods-Venues.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venues.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Venues/Pods-Venues.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 		AA4FFC362122C9D00007A08B /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				E7D5E0FF212487FB00261725 /* Annotation */,
 				AA4FFC472122D2F80007A08B /* MapModels.swift */,
 				AA4FFC492122D30A0007A08B /* MapViewController.swift */,
 				AA4FFC4B2122D32A0007A08B /* MapInteractor.swift */,
@@ -178,11 +181,19 @@
 				AA4FFC342122C4630007A08B /* Views */,
 				AA4FFC352122C46C0007A08B /* Scenes */,
 				AA5E57312121BB0B00BA5449 /* AppDelegate.swift */,
-				AA5E57382121BB0F00BA5449 /* Assets.xcassets */,
 				AA5E573A2121BB0F00BA5449 /* LaunchScreen.storyboard */,
+				E7D5E10221249EB200261725 /* Assets.xcassets */,
 				AA5E573D2121BB0F00BA5449 /* Info.plist */,
 			);
 			path = Venues;
+			sourceTree = "<group>";
+		};
+		E7D5E0FF212487FB00261725 /* Annotation */ = {
+			isa = PBXGroup;
+			children = (
+				E7D5E1002124880700261725 /* CustomAnnotation.swift */,
+			);
+			path = Annotation;
 			sourceTree = "<group>";
 		};
 		FF3EE42C030856B89D353396 /* Frameworks */ = {
@@ -205,7 +216,6 @@
 				AA5E572B2121BB0B00BA5449 /* Frameworks */,
 				AA5E572C2121BB0B00BA5449 /* Resources */,
 				53B6D050911913F1BEEF90A3 /* [CP] Embed Pods Frameworks */,
-				0EF4737061ED436A6898796B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA5E573C2121BB0F00BA5449 /* LaunchScreen.storyboard in Resources */,
-				AA5E57392121BB0F00BA5449 /* Assets.xcassets in Resources */,
+				E7D5E10321249EB200261725 /* Assets.xcassets in Resources */,
 				AA5E57372121BB0B00BA5449 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,21 +273,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0EF4737061ED436A6898796B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Venues/Pods-Venues-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		53B6D050911913F1BEEF90A3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,10 +281,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Venues/Pods-Venues-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Cluster/Cluster.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cluster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -338,6 +339,7 @@
 				AA4FFC5E2122D41C0007A08B /* DetailsRouter.swift in Sources */,
 				AA4FFC442122D0DA0007A08B /* Hours.swift in Sources */,
 				AA4FFC562122D3ED0007A08B /* DetailsViewController.swift in Sources */,
+				E7D5E1012124880700261725 /* CustomAnnotation.swift in Sources */,
 				AA4FFC522122D36C0007A08B /* MapRouter.swift in Sources */,
 				AA4FFC3D2122CED60007A08B /* Location.swift in Sources */,
 				AA4FFC542122D3E00007A08B /* DetailsModel.swift in Sources */,
@@ -489,7 +491,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -505,7 +510,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6T8B3V6FD3;
 				INFOPLIST_FILE = Venues/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.viveris.fabrice.project.Venues;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

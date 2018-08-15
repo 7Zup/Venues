@@ -15,11 +15,7 @@ enum Map {
         
         struct Request {
             
-            var ll: String?
-            var near: String?
-            var radius: Int?
-            var query: String?
-            var limit: Int?
+            var urlParams: [String: String]
         }
         
         struct Response {
@@ -29,7 +25,15 @@ enum Map {
         
         struct ViewModel {
             
-            var venueList: [Venue]
+            struct Pin {
+                
+                var id: String
+                var icon: String
+                var lat: Double
+                var lng: Double
+            }
+            
+            var pinList: [Pin]
         }
     }
 }

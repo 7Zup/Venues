@@ -109,6 +109,7 @@ class APIManager {
                             errorHandler?(MapError.RequestFailed("Error - The request failed with status code \(responseR.statusCode)"))
                             return
                         }
+
                         // Decode response
                         let decoder = JSONDecoder()
                         let decodedData: [T] = try decoder.decode([T].self, from: data)

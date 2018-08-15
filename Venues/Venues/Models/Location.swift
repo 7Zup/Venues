@@ -19,19 +19,4 @@ struct Location: Codable {
     var city: String?
     var state: String?
     var country: String?
-    var formattedAddress: String?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case address
-        case crossStreet
-        case lat
-        case lng
-        case postalCode
-        case cc
-        case city
-        case state
-        case country
-        case formattedAddress
-    }
 }

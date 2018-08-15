@@ -8,12 +8,17 @@
 
 import Foundation
 
+struct VenueListResponse: Codable {
+    
+    var response: VenueList?
+}
+
 struct VenueList: Codable {
-    
-    var venueList: [Venue?]
-    
+
+    var venueList: [Venue]?
+
     enum CodingKeys: String, CodingKey {
-        
+
         case venueList = "venues"
     }
 }
