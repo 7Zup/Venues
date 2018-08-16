@@ -184,8 +184,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             clusterManager.add(annotation)
         }
-        clusterManager.reload(mapView: mapView) { finished in
-        }
+        clusterManager.reload(mapView, visibleMapRect: mapView.visibleMapRect)
         
         // Hide btn once the map has been refreshed
         refreshSearchButton.fadeOut()
@@ -203,11 +202,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         return newImage
     }
     
+    // Concat pin + category's icon
     func getBigAnnotationImage(annotation: CustomAnnotation) -> UIImage {
         
         return resizeImage(image: UIImage(named: "pin")!, scaledToSize: CGSize(width: 80, height: 80)).imageOverlayingImages([resizeImage(image: annotation.image!, scaledToSize: CGSize(width: 35, height: 35))], marginTop: 45)
     }
     
+    // Concat pin + category's icon
     func getSmallAnnotationImage(annotation: CustomAnnotation) -> UIImage {
         
         return resizeImage(image: UIImage(named: "pin")!, scaledToSize: CGSize(width: 50, height: 50)).imageOverlayingImages([resizeImage(image: annotation.image!, scaledToSize: CGSize(width: 30, height: 30))], marginTop: 27)
@@ -252,8 +253,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         else if let annotation = annotation as? CustomAnnotation {
             
-            
             view.image = getBigAnnotationImage(annotation: annotation)
+            self.router?.routeToModalDetail()
         }
     }
     
@@ -269,8 +270,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             if let view = view as? ClusterAnnotationView {
                 view.annotation = annotation
-                view.style = style
-                view.configure()
+                view.configure(with: view.style)
             } else {
                 view = ClusterAnnotationView(annotation: annotation, reuseIdentifier: identifier, style: style)
             }
@@ -323,8 +323,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         // Refresh clusters to regroup pins even if they are not being updated
-        clusterManager.reload(mapView: mapView) { finished in
-        }
+        clusterManager.reload(mapView, visibleMapRect: mapView.visibleMapRect)
     }
     
     func updatePins() {

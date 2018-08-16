@@ -17,21 +17,24 @@ open class ClusterAnnotation: Annotation {
 
     open override func isEqual(_ object: Any?) -> Bool {
         guard let object = object as? ClusterAnnotation else { return false }
-        
+
         if self === object {
             return true
         }
-        
+
         if coordinate != object.coordinate {
             return false
         }
-        
-        if annotations.count != object.annotations.count {
+
+        let rhsAnnotations = object.annotations
+
+        if annotations.count != rhsAnnotations.count {
             return false
         }
-        
-        return annotations.map { $0.coordinate } == object.annotations.map { $0.coordinate }
+
+        return annotations.subtracted(rhsAnnotations).count == 0
     }
+
 }
 
 /**
@@ -71,7 +74,7 @@ open class ClusterAnnotationView: MKAnnotationView {
     /**
      The style of the cluster annotation view.
      */
-    public var style: ClusterAnnotationStyle
+    public private(set) var style: ClusterAnnotationStyle
     
     /**
      Initializes and returns a new cluster annotation view.
@@ -86,20 +89,14 @@ open class ClusterAnnotationView: MKAnnotationView {
     public init(annotation: MKAnnotation?, reuseIdentifier: String?, style: ClusterAnnotationStyle) {
         self.style = style
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        configure()
+        configure(with: style)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @available(iOS, deprecated: 2.2.5, message:"Use configure()")
     open func configure(with style: ClusterAnnotationStyle) {
-        self.style = style
-        configure()
-    }
-    
-    open func configure() {
         guard let annotation = annotation as? ClusterAnnotation else { return }
         
         switch style {

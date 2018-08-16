@@ -7,8 +7,8 @@ target 'Venues' do
 
   # Pods for Venues
   pod 'Alamofire', '~> 4.7'
-  pod 'AlamofireImage', '~> 3.3'
   pod 'SDWebImage', '~> 4.0'
-  pod 'Cluster'
+  pod 'Cluster', '~> 2.0'
+  pod 'Presentr', '~> 1.3'
 
 end

@@ -102,10 +102,6 @@ extension Array where Element: MKAnnotation {
     mutating func add(_ other: [Element]) {
         self.append(contentsOf: other)
     }
-    @discardableResult
-    mutating func remove(_ item: Element) -> Element? {
-        return index { $0.isEqual(item) }.map { remove(at: $0) }
-    }
 }
 
 extension MKPolyline {
@@ -118,16 +114,5 @@ extension MKPolyline {
             MKMapPoint(x: mapRect.minX, y: mapRect.minY)
         ]
         self.init(points: points, count: points.count)
-    }
-}
-
-extension OperationQueue {
-    func addBlockOperation(_ block: @escaping (BlockOperation) -> Void) {
-        let operation = BlockOperation()
-        operation.addExecutionBlock { [weak operation] in
-            guard let operation = operation else { return }
-            block(operation)
-        }
-        self.addOperation(operation)
     }
 }
