@@ -31,6 +31,9 @@
 		AA5E57322121BB0B00BA5449 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E57312121BB0B00BA5449 /* AppDelegate.swift */; };
 		AA5E57372121BB0B00BA5449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E57352121BB0B00BA5449 /* Main.storyboard */; };
 		AA5E573C2121BB0F00BA5449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA5E573A2121BB0F00BA5449 /* LaunchScreen.storyboard */; };
+		AACB1E9721256F3B00A51B4B /* ExMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB1E9621256F3B00A51B4B /* ExMKMapView.swift */; };
+		AACB1E9921256F8400A51B4B /* ExUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB1E9821256F8400A51B4B /* ExUIImage.swift */; };
+		AACB1E9B2125778C00A51B4B /* ExUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AACB1E9A2125778C00A51B4B /* ExUIView.swift */; };
 		E7D5E1012124880700261725 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5E1002124880700261725 /* CustomAnnotation.swift */; };
 		E7D5E10321249EB200261725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7D5E10221249EB200261725 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,9 @@
 		AA5E57362121BB0B00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA5E573B2121BB0F00BA5449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA5E573D2121BB0F00BA5449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AACB1E9621256F3B00A51B4B /* ExMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExMKMapView.swift; sourceTree = "<group>"; };
+		AACB1E9821256F8400A51B4B /* ExUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIImage.swift; sourceTree = "<group>"; };
+		AACB1E9A2125778C00A51B4B /* ExUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExUIView.swift; sourceTree = "<group>"; };
 		E7D5E1002124880700261725 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		E7D5E10221249EB200261725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F92938F3C3418B7F6092FA1F /* Pods-Venues.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venues.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Venues/Pods-Venues.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,6 +182,7 @@
 		AA5E57302121BB0B00BA5449 /* Venues */ = {
 			isa = PBXGroup;
 			children = (
+				AACB1E9521256F2500A51B4B /* Utils */,
 				AA4FFC60212321210007A08B /* API */,
 				AA4FFC332122C4580007A08B /* Models */,
 				AA4FFC342122C4630007A08B /* Views */,
@@ -186,6 +193,16 @@
 				AA5E573D2121BB0F00BA5449 /* Info.plist */,
 			);
 			path = Venues;
+			sourceTree = "<group>";
+		};
+		AACB1E9521256F2500A51B4B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AACB1E9621256F3B00A51B4B /* ExMKMapView.swift */,
+				AACB1E9821256F8400A51B4B /* ExUIImage.swift */,
+				AACB1E9A2125778C00A51B4B /* ExUIView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		E7D5E0FF212487FB00261725 /* Annotation */ = {
@@ -322,10 +339,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACB1E9921256F8400A51B4B /* ExUIImage.swift in Sources */,
 				AA4FFC422122D0800007A08B /* Icon.swift in Sources */,
 				AA4FFC462122D1640007A08B /* VenueList.swift in Sources */,
 				AA4FFC502122D3530007A08B /* MapPresenter.swift in Sources */,
 				AA4FFC4E2122D33D0007A08B /* MapWorker.swift in Sources */,
+				AACB1E9B2125778C00A51B4B /* ExUIView.swift in Sources */,
 				AA4FFC5A2122D4080007A08B /* DetailsWorker.swift in Sources */,
 				AA4FFC582122D3FC0007A08B /* DetailsInteractor.swift in Sources */,
 				AA4FFC622123213D0007A08B /* APIManager.swift in Sources */,
@@ -343,6 +362,7 @@
 				AA4FFC522122D36C0007A08B /* MapRouter.swift in Sources */,
 				AA4FFC3D2122CED60007A08B /* Location.swift in Sources */,
 				AA4FFC542122D3E00007A08B /* DetailsModel.swift in Sources */,
+				AACB1E9721256F3B00A51B4B /* ExMKMapView.swift in Sources */,
 				AA4FFC392122CBAB0007A08B /* Venue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

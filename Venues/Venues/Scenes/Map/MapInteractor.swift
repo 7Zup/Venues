@@ -34,7 +34,7 @@ class MapInteractor: MapBusinessLogic, MapData {
         urlParams["radius"] = "\(radius)"
         urlParams["limit"] = "\(10)"
         
-        self.worker?.getVenueList(request: Map.Search.Request(urlParams: urlParams), completionHandler: venueListCompletionHandler, errorHandler: venuListErrorHandler)
+        self.worker?.getVenueList(request: Map.Search.Request(urlParams: urlParams), completionHandler: venueListCompletionHandler, errorHandler: venueListErrorHandler)
     }
     
     func venueListCompletionHandler(response: VenueListResponse?) {
@@ -45,8 +45,8 @@ class MapInteractor: MapBusinessLogic, MapData {
         }
     }
     
-    func venuListErrorHandler(error: Error) {
+    func venueListErrorHandler(error: Error) {
         
-        print(error)
+        print("Error in venueListErrorHandler: ", error)
     }
 }
