@@ -11,5 +11,5 @@ import Foundation
 struct Hours: Codable {
     
     var status: String?
-    var isOpen: String?
+    var isOpen: Bool?
 }

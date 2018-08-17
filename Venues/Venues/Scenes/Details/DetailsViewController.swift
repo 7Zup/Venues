@@ -10,12 +10,26 @@ import Foundation
 import UIKit
 
 protocol DetailsDisplayLogic: class {
+    
+    func displayVenueDetails(viewModel: Details.Get.ViewModel)
 }
 
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
     
     var interactor: DetailsBusinessLogic?
     var router: (NSObjectProtocol & DetailsRoutingLogic & DetailsDataPassing)?
+    
+    @IBOutlet var whereView: UIView!
+    @IBOutlet var goButton: UIButton!
+    @IBOutlet var greyBackgroundView: UIView!
+    
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var categoryImage: UIImageView!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var openUntilLabel: UILabel!
+    
     
     // MARK: Object lifecycle
     
@@ -86,6 +100,28 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     }
     
     private func initContent() {
+        
+        initViews()
+        requestData()
+    }
+    
+    func initViews() {
+        
+        // Round corner & shadow
+        self.greyBackgroundView.roundCorner()
+        self.greyBackgroundView.createShadow()
+        
+        // Round corner & shadow
+        self.goButton.roundCorner()
+        self.goButton.createShadow()
+        
+        // Round corner & shadow
+        self.whereView.roundCorner()
+    }
+    
+    func requestData() {
+        
+        self.interactor?.getVenue()
     }
     
     // MARK: - Obj Actions
@@ -93,5 +129,17 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     @IBAction func dismissViewBtnTD(_ sender: Any) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Protocol DisplayLogic
+    
+    func displayVenueDetails(viewModel: Details.Get.ViewModel) {
+
+        self.addressLabel.text = viewModel.address
+        self.nameLabel.text = viewModel.name
+        self.categoryLabel.text = viewModel.category
+        self.categoryImage.image = viewModel.icon
+        self.ratingLabel.text = viewModel.rating
+        self.openUntilLabel.text = viewModel.openUntil
     }
 }

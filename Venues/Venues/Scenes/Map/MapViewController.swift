@@ -100,15 +100,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func initRefreshBtn() {
         
+        // Hide at first
         self.refreshSearchButton.alpha = 0.0
-        self.refreshSearchButton.backgroundColor = UIColor.white
-        // Shadow and Radius
-        self.refreshSearchButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        self.refreshSearchButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        self.refreshSearchButton.layer.shadowOpacity = 1.0
-        self.refreshSearchButton.layer.shadowRadius = 0.0
-        self.refreshSearchButton.layer.masksToBounds = false
-        self.refreshSearchButton.layer.cornerRadius = 19.0
+        
+        // Shadow and Corner
+        self.refreshSearchButton.createShadow()
+        self.refreshSearchButton.roundCorner(radius: 19.0)
         
         self.firstRefresh = true
     }
@@ -152,24 +149,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         self.updatePins()
     }
-    // MARK: - Location Manager Delegate
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let userLocation:CLLocation = locations[0] as CLLocation
-        
-        // Center map on user just once
-        manager.stopUpdatingLocation()
-        
-        if firstRefresh == true {
-            
-            centerMapOnLocation(location: userLocation)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error with laction manager: \(error)")
-    }
     
     // MARK: - Display Logic
     
@@ -190,7 +169,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // Add each pin in mapView
         for pin in viewModel.pinList {
             
-            let annotation = CustomAnnotation(id: "id", thumbnailUrl: pin.icon, coordinate: CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng))
+            let annotation = CustomAnnotation(id: pin.id, thumbnailUrl: pin.icon, coordinate: CLLocationCoordinate2D(latitude: pin.lat, longitude: pin.lng))
             
             clusterManager.add(annotation)
         }
@@ -198,6 +177,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         // Hide btn once the map has been refreshed
         refreshSearchButton.fadeOut()
+    }
+    
+    // MARK: - Location Manager Delegate
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let userLocation:CLLocation = locations[0] as CLLocation
+        
+        // Center map on user just once
+        manager.stopUpdatingLocation()
+        
+        if firstRefresh == true {
+            
+            centerMapOnLocation(location: userLocation)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+        print("Error with laction manager: \(error)")
     }
     
     // MARK: - MapView Functions
@@ -264,6 +263,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         else if let annotation = annotation as? CustomAnnotation {
             
             view.image = getBigAnnotationImage(annotation: annotation)
+            self.interactor?.updateSelectedId(with: annotation.id)
+            self.refreshSearchButton.alpha = 0.0
             self.router?.routeToModalDetail()
         }
     }

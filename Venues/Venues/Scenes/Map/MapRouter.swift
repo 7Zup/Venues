@@ -63,6 +63,7 @@ class MapRouter: NSObject, MapRoutingLogic, MapDataPassing, DetailsDelegate {
     private func passDataToUserList(source: MapData, destination: inout DetailsData) {
         
         destination.detailsDelegate = self
+        destination.venueId = source.selectedVenueId
     }
     
     // MARK: - Protocol called from DetailsViewController

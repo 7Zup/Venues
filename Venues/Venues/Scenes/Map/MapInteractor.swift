@@ -12,11 +12,13 @@ import UIKit
 protocol MapBusinessLogic {
 
     func getVenueList(ll: String, radius: Int)
+    func updateSelectedId(with id: String?)
 }
 
 protocol MapData {
     
-    var query: String? {get set}
+    var query: String? { get set }
+    var selectedVenueId: String? { get set }
 }
 
 class MapInteractor: MapBusinessLogic, MapData {
@@ -25,6 +27,16 @@ class MapInteractor: MapBusinessLogic, MapData {
     var worker: MapWorker?
     
     var query: String?
+    var selectedVenueId: String?
+    
+    // MARK: - Update seleted ID
+    
+    func updateSelectedId(with id: String?) {
+        
+        self.selectedVenueId = id
+    }
+    
+    // MARK: - Get Venue List
     
     func getVenueList(ll: String, radius: Int = 250) {
         

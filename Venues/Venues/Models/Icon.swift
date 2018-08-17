@@ -10,6 +10,6 @@ import Foundation
 
 struct Icon: Codable {
     
-    var prefix: String?
-    var suffix: String?
+    var prefix: String
+    var suffix: String
 }

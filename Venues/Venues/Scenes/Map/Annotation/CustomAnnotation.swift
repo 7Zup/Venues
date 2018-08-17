@@ -12,7 +12,7 @@ import Cluster
 
 class CustomAnnotation: NSObject, MKAnnotation {
     
-    var id: String?
+    var id: String
     var title: String?
     var imageView: UIImageView!
     var coordinate: CLLocationCoordinate2D
@@ -25,10 +25,12 @@ class CustomAnnotation: NSObject, MKAnnotation {
         self.imageView = UIImageView()
         self.coordinate = coordinate
         
-        if let image = try? UIImage(withContentsOfUrl: URL(string: thumbnailUrl)!) {
+        if let url = URL(string: thumbnailUrl), let image = try? UIImage(withContentsOfUrl: url) {
+            
             self.image = image
         } else {
-            self.image = nil
+            
+            self.image = UIImage(named: "unknown")?.tint(with: UIColor.white)
         }
     }
 }

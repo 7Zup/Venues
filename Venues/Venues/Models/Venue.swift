@@ -8,6 +8,16 @@
 
 import Foundation
 
+struct VenueResponse: Codable {
+    
+    var response: VenueDetails?
+}
+
+struct VenueDetails: Codable {
+    
+    var venue: Venue?
+}
+
 struct Venue: Codable {
     
     var id: String?

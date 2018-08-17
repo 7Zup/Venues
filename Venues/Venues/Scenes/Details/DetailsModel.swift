@@ -7,18 +7,30 @@
 //
 
 import Foundation
+import UIKit
 
 enum Details {
     
-    enum Details {
+    enum Get {
         
         struct Request {
+            
+            var venueId: String
         }
         
         struct Response {
+            
+            var venue: Venue
         }
         
         struct ViewModel {
+            
+            var name: String
+            var rating: String?
+            var openUntil: String?
+            var category: String?
+            var icon: UIImage?
+            var address: String?
         }
     }
 }
