@@ -20,7 +20,7 @@ protocol MapDataPassing {
     var data: MapData? { get }
 }
 
-class MapRouter: NSObject, MapRoutingLogic, MapDataPassing {
+class MapRouter: NSObject, MapRoutingLogic, MapDataPassing, DetailsDelegate {
     
     weak var viewController: MapViewController?
     var data: MapData?
@@ -62,7 +62,13 @@ class MapRouter: NSObject, MapRoutingLogic, MapDataPassing {
     
     private func passDataToUserList(source: MapData, destination: inout DetailsData) {
         
-        //        destination.user = source.user
-        //        destination.event = source.event
+        destination.detailsDelegate = self
+    }
+    
+    // MARK: - Protocol called from DetailsViewController
+    
+    func detailViewDisappeared() {
+        
+        self.viewController?.deselectAnnotations()
     }
 }

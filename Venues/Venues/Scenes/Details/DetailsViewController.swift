@@ -59,6 +59,12 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        self.router?.notifyParentViewDismiss()
+    }
+    
     // MARK: - Initilize content
     
     // Setup all the parts of the VIP Architecture
@@ -80,5 +86,12 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     }
     
     private func initContent() {
+    }
+    
+    // MARK: - Obj Actions
+    
+    @IBAction func dismissViewBtnTD(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

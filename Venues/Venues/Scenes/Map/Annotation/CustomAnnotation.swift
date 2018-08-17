@@ -17,7 +17,6 @@ class CustomAnnotation: NSObject, MKAnnotation {
     var imageView: UIImageView!
     var coordinate: CLLocationCoordinate2D
     var image: UIImage?
-    var isSelected = false
     
     init(id: String, thumbnailUrl: String, coordinate: CLLocationCoordinate2D, title: String = "Title") {
         

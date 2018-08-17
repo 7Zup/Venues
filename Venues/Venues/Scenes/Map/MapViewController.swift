@@ -14,6 +14,7 @@ import Cluster
 protocol MapDisplayLogic: class {
     
     func displayPinList(viewModel: Map.Search.ViewModel)
+    func deselectAnnotations()
 }
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapDisplayLogic {
@@ -145,7 +146,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    // MARK: - Btn Listener
+    // MARK: - Button Listener
     
     @IBAction func refreshBtnTUI(_ sender: Any) {
         
@@ -171,6 +172,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: - Display Logic
+    
+    // Deselect annotation after DetailsView disappeared
+    func deselectAnnotations() {
+        
+        for annotation in mapView.annotations {
+         
+            mapView.deselectAnnotation(annotation, animated: true)
+        }
+    }
     
     func displayPinList(viewModel: Map.Search.ViewModel) {
         
@@ -229,7 +239,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         if let annotation = annotation as? CustomAnnotation {
             
-            view.image = resizeImage(image: UIImage(named: "pin")!, scaledToSize: CGSize(width: 50, height: 50)).imageOverlayingImages([resizeImage(image: annotation.image!, scaledToSize: CGSize(width: 30, height: 30))], marginTop: 27)
+            view.image = getSmallAnnotationImage(annotation: annotation)
         }
     }
     
