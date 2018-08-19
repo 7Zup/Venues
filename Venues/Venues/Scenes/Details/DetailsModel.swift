@@ -33,4 +33,27 @@ enum Details {
             var address: String?
         }
     }
+    
+    enum LaunchMap {
+        
+        struct Request {
+        }
+        
+        struct Response {
+            
+            var launchDetails: LaunchDetails
+        }
+        
+        struct ViewModel {
+            
+            var launchDetails: LaunchDetails
+        }
+        
+        struct LaunchDetails {
+            
+            var name: String
+            var lng: Double
+            var lat: Double
+        }
+    }
 }

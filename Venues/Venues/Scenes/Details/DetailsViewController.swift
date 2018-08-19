@@ -8,10 +8,12 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 protocol DetailsDisplayLogic: class {
     
     func displayVenueDetails(viewModel: Details.Get.ViewModel)
+    func displayMaps(viewModel: Details.LaunchMap.ViewModel)
 }
 
 class DetailsViewController: UIViewController, DetailsDisplayLogic {
@@ -131,6 +133,11 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goButtonTUI(_ sender: Any) {
+        
+        self.interactor?.tryToLaunchMaps()
+    }
+    
     // MARK: - Protocol DisplayLogic
     
     func displayVenueDetails(viewModel: Details.Get.ViewModel) {
@@ -141,5 +148,23 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         self.categoryImage.image = viewModel.icon
         self.ratingLabel.text = viewModel.rating
         self.openUntilLabel.text = viewModel.openUntil
+    }
+    
+    func displayMaps(viewModel: Details.LaunchMap.ViewModel) {
+        
+        let latitude: CLLocationDegrees = viewModel.launchDetails.lat
+        let longitude: CLLocationDegrees = viewModel.launchDetails.lng
+        
+        let regionDistance:CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = viewModel.launchDetails.name
+        mapItem.openInMaps(launchOptions: options)
     }
 }

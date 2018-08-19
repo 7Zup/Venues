@@ -12,6 +12,7 @@ import UIKit
 protocol DetailsPresentationLogic {
     
     func presentVenueDetails(response: Details.Get.Response)
+    func presentMaps(response: Details.LaunchMap.Response)
 }
 
 class DetailsPresenter: DetailsPresentationLogic {
@@ -69,6 +70,11 @@ class DetailsPresenter: DetailsPresentationLogic {
             let viewModel = Details.Get.ViewModel(name: name, rating: rating, openUntil: openUntil, category: type, icon: image.tint(with: appColor), address: address)
             self.viewController?.displayVenueDetails(viewModel: viewModel)
         }
+    }
+    
+    func presentMaps(response: Details.LaunchMap.Response) {
+        
+        self.viewController?.displayMaps(viewModel: Details.LaunchMap.ViewModel(launchDetails: response.launchDetails))
     }
 }
 

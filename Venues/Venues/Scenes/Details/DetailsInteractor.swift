@@ -12,6 +12,7 @@ import UIKit
 protocol DetailsBusinessLogic {
     
     func getVenue()
+    func tryToLaunchMaps()
 }
 
 protocol DetailsData {
@@ -26,6 +27,7 @@ class DetailsInteractor: DetailsBusinessLogic, DetailsData {
     var worker: DetailsWorker?
     var detailsDelegate: DetailsDelegate?
     var venueId: String?
+    var lastVenue: Venue?
     
     func getVenue() {
         
@@ -39,6 +41,7 @@ class DetailsInteractor: DetailsBusinessLogic, DetailsData {
         
         if let venueResponse = response?.response, let venueDetails = venueResponse.venue {
 
+            self.lastVenue = venueDetails
             self.presenter?.presentVenueDetails(response: Details.Get.Response(venue: venueDetails))
         }
     }
@@ -46,5 +49,15 @@ class DetailsInteractor: DetailsBusinessLogic, DetailsData {
     func errorHandler(error: Error) {
         
         print("Error in DetailsInteractor: \(error)")
+    }
+    
+    // MARK: - Try to launch maps
+    
+    func tryToLaunchMaps() {
+        
+        if let venue = self.lastVenue, let name = venue.name, let lng = venue.location?.lng, let lat = venue.location?.lat {
+            
+            self.presenter?.presentMaps(response: Details.LaunchMap.Response(launchDetails: Details.LaunchMap.LaunchDetails(name: name, lng: lng, lat: lat)))
+        }
     }
 }

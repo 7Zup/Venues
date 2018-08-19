@@ -14,7 +14,6 @@
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="Venues" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -54,13 +53,13 @@
                         <outlet property="refreshSearchButton" destination="Jyo-D6-VxV" id="Z5c-zO-c1n"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="185" y="61"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="K2j-zK-twT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0ur-u6-1Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="DetailsViewController" id="Ge5-3E-x2y" customClass="DetailsViewController" customModule="Venues" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cr2-RC-cY9" userLabel="ClearView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="270"/>
@@ -88,6 +87,9 @@
                                 <state key="normal" title="Lets go">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="goButtonTUI:" destination="Ge5-3E-x2y" eventType="touchUpInside" id="3Sv-g1-s9b"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SeA-vs-ZBY" userLabel="Grey Background View">
                                 <rect key="frame" x="15" y="13" width="345" height="180"/>
@@ -252,7 +254,7 @@
                         <outlet property="addressLabel" destination="v54-Zm-jj5" id="K32-DD-e0i"/>
                         <outlet property="categoryImage" destination="u1A-JX-1Tu" id="mg2-fk-pe6"/>
                         <outlet property="categoryLabel" destination="WsX-mk-lcg" id="6Rf-Af-gqs"/>
-                        <outlet property="goButton" destination="l4K-BN-2Vt" id="MPk-hf-oeo"/>
+                        <outlet property="goButton" destination="l4K-BN-2Vt" id="bnh-AJ-JAU"/>
                         <outlet property="greyBackgroundView" destination="SeA-vs-ZBY" id="XmU-tx-Z6c"/>
                         <outlet property="nameLabel" destination="fw9-qE-hUs" id="Hwq-K9-RLY"/>
                         <outlet property="openUntilLabel" destination="jjT-kD-8PK" id="AL2-Kc-dN8"/>
@@ -260,6 +262,7 @@
                         <outlet property="whereView" destination="fP6-tR-LK7" id="oAd-TM-V0P"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ur-u6-1Wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="929" y="60"/>
         </scene>
