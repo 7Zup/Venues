@@ -25,10 +25,8 @@ class APIManager {
     
     private let apiURL: String = "https://api.foursquare.com/v2/venues"
     
-//    private var client_id: String = "AWSDJGYL5LZ1TUZL0IPNRJ2FXR5JDC2J0GRJVRIGZEMG1HBV"
-//    private var client_secret: String = "5MLYU5BL4IHPFV1VYLKGTA3IE4JPGJHIPJLYESTV222GDWZG"
-    private var client_id: String = "2TVV20WHKRMSYQHAXEE04FDNNZ1IKXZMLUBATMCBUXQNLSUZ"
-    private var client_secret: String = "MKFK4ZSCU1QC2EYR13QQ4BZGW3HZ3SVI4EZZ0EQPKRTQWIYN"
+    private var client_id: String = "LQ4HJG2XXDS3NW0W4IDID4NRSTRFMDANMI3OV4QI41GRNFLM"
+    private var client_secret: String = "LOTX5A1FWOOJDDWP1WXCLOEJBLCUR3E3FXXBMLATNK4YECH5"
     private var version: String = "20180323"
     
     static let shared = APIManager()
