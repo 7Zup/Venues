@@ -11,7 +11,7 @@ import UIKit
 
 protocol MapBusinessLogic {
 
-    func getVenueList(ll: String, radius: Int)
+    func getVenueList(with query: String?, ll: String, radius: Int)
     func updateSelectedId(with id: String?)
 }
 
@@ -38,13 +38,17 @@ class MapInteractor: MapBusinessLogic, MapData {
     
     // MARK: - Get Venue List
     
-    func getVenueList(ll: String, radius: Int = 250) {
+    func getVenueList(with query: String?, ll: String, radius: Int = 250) {
         
         var urlParams = [String: String]()
         
         urlParams["ll"] = ll
         urlParams["radius"] = "\(radius)"
         urlParams["limit"] = "\(10)"
+        if let query = query {
+            
+            urlParams["query"] = query
+        }
         
         self.worker?.getVenueList(request: Map.Search.Request(urlParams: urlParams), completionHandler: venueListCompletionHandler, errorHandler: venueListErrorHandler)
     }

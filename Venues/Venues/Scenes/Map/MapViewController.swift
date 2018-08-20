@@ -17,7 +17,7 @@ protocol MapDisplayLogic: class {
     func deselectAnnotations()
 }
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, MapDisplayLogic {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UISearchBarDelegate, MapDisplayLogic {
     
     var interactor: MapBusinessLogic?
     var router: (NSObjectProtocol & MapRoutingLogic & MapDataPassing)?
@@ -29,6 +29,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet var refreshSearchButton: UIButton!
     var firstRefresh = true
+    
+    @IBOutlet var mapSearchBar: UISearchBar!
     
     // MARK: Object lifecycle
     
@@ -90,6 +92,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     private func initContent() {
+        
+        self.hideKeyboardWhenTappedAround()
         
         // Init
         initRefreshBtn()
@@ -179,6 +183,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         refreshSearchButton.fadeOut()
     }
     
+    // MARK: - SearchBar Delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        // to limit network activity, reload half a second after last key press.
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.updatePins), object: nil)
+        self.perform(#selector(self.updatePins), with: nil, afterDelay: 0.5)
+    }
+    
     // MARK: - Location Manager Delegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -197,6 +210,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
         print("Error with laction manager: \(error)")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        view.endEditing(true)
     }
     
     // MARK: - MapView Functions
@@ -337,9 +355,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         clusterManager.reload(mapView, visibleMapRect: mapView.visibleMapRect)
     }
     
-    func updatePins() {
+    @objc func updatePins() {
         
         let center = mapView.centerCoordinate
-        self.interactor?.getVenueList(ll: "\(center.latitude),\(center.longitude)", radius: mapView.currentRadius())
+        self.interactor?.getVenueList(with: self.mapSearchBar.text, ll: "\(center.latitude),\(center.longitude)", radius: mapView.currentRadius())
     }
 }

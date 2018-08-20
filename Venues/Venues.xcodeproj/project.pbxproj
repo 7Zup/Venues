@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E794C782175FA83F1291D13 /* Pods_Venues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */; };
+		AA1E128F212AB39500F39DB8 /* EXUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */; };
 		AA4FFC392122CBAB0007A08B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC382122CBAB0007A08B /* Venue.swift */; };
 		AA4FFC3B2122CDE60007A08B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3A2122CDE60007A08B /* Contact.swift */; };
 		AA4FFC3D2122CED60007A08B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3C2122CED60007A08B /* Location.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		356EEBAFB954359785DDF68B /* Pods-Venues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venues.release.xcconfig"; path = "Pods/Target Support Files/Pods-Venues/Pods-Venues.release.xcconfig"; sourceTree = "<group>"; };
 		4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Venues.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXUIViewController.swift; sourceTree = "<group>"; };
 		AA4FFC382122CBAB0007A08B /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		AA4FFC3A2122CDE60007A08B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		AA4FFC3C2122CED60007A08B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				AACB1E9821256F8400A51B4B /* ExUIImage.swift */,
 				AACB1E9A2125778C00A51B4B /* ExUIView.swift */,
 				AACB1E9C21271A1800A51B4B /* UIColor.swift */,
+				AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				AA4FFC4C2122D32A0007A08B /* MapInteractor.swift in Sources */,
 				AA4FFC482122D2F80007A08B /* MapModels.swift in Sources */,
 				AA4FFC5E2122D41C0007A08B /* DetailsRouter.swift in Sources */,
+				AA1E128F212AB39500F39DB8 /* EXUIViewController.swift in Sources */,
 				AA4FFC442122D0DA0007A08B /* Hours.swift in Sources */,
 				AA4FFC562122D3ED0007A08B /* DetailsViewController.swift in Sources */,
 				E7D5E1012124880700261725 /* CustomAnnotation.swift in Sources */,
