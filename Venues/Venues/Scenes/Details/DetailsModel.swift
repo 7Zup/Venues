@@ -26,7 +26,7 @@ enum Details {
         struct ViewModel {
             
             var name: String
-            var rating: String?
+            var rating: Double?
             var openUntil: String?
             var category: String?
             var icon: UIImage?

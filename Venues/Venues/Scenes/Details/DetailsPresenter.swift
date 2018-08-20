@@ -26,7 +26,7 @@ class DetailsPresenter: DetailsPresentationLogic {
         if let name = response.venue.name {
             
             var address = "Unknown Address"
-            var rating = "No rating for now"
+            var rating: Double?
             var openUntil = "This venue has no schedule yet"
             var type = "Unknown type"
             var icon: Icon?
@@ -45,7 +45,7 @@ class DetailsPresenter: DetailsPresentationLogic {
             
             if let venueRating = response.venue.rating {
                 
-                rating = "\(venueRating) / 10"
+                rating = (venueRating / 2).rounded(numberOfDecimalAfterComa: 1)
             }
             
             if let venueOpenUntil = response.venue.hours?.status {

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import Cosmos
 
 protocol DetailsDisplayLogic: class {
     
@@ -25,11 +26,13 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     @IBOutlet var goButton: UIButton!
     @IBOutlet var greyBackgroundView: UIView!
     
+    @IBOutlet var ratingLabelError: UILabel!
+    @IBOutlet var ratingView: CosmosView!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var categoryImage: UIImageView!
-    @IBOutlet var ratingLabel: UILabel!
+//    @IBOutlet var ratingLabel: UILabel!
     @IBOutlet var openUntilLabel: UILabel!
     
     
@@ -103,6 +106,7 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
     
     private func initContent() {
         
+        self.ratingLabelError.alpha = 0.0
         initViews()
         requestData()
     }
@@ -146,7 +150,17 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
         self.nameLabel.text = viewModel.name
         self.categoryLabel.text = viewModel.category
         self.categoryImage.image = viewModel.icon
-        self.ratingLabel.text = viewModel.rating
+        if let rating = viewModel.rating {
+         
+            self.ratingView.rating = rating
+            self.ratingView.text = "\(rating)"
+            self.ratingView.alpha = 1.0
+            self.ratingLabelError.alpha = 0.0
+        } else {
+            
+            self.ratingView.alpha = 0.0
+            self.ratingLabelError.alpha = 1.0
+        }
         self.openUntilLabel.text = viewModel.openUntil
     }
     

@@ -28,5 +28,5 @@ struct Venue: Codable {
     var verified: Bool?
     var url: String?
     var hours: Hours?
-    var rating: Float?
+    var rating: Double?
 }

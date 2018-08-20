@@ -10,5 +10,6 @@ target 'Venues' do
   pod 'SDWebImage', '~> 4.0'
   pod 'Cluster', '~> 2.0'
   pod 'Presentr', '~> 1.3'
-
+  pod 'Cosmos', '~> 15.0'
+  
 end

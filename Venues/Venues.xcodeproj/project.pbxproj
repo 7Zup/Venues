@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E794C782175FA83F1291D13 /* Pods_Venues.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */; };
 		AA1E128F212AB39500F39DB8 /* EXUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */; };
+		AA1E1291212AFB2700F39DB8 /* ExDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1E1290212AFB2700F39DB8 /* ExDouble.swift */; };
 		AA4FFC392122CBAB0007A08B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC382122CBAB0007A08B /* Venue.swift */; };
 		AA4FFC3B2122CDE60007A08B /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3A2122CDE60007A08B /* Contact.swift */; };
 		AA4FFC3D2122CED60007A08B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4FFC3C2122CED60007A08B /* Location.swift */; };
@@ -44,6 +45,7 @@
 		356EEBAFB954359785DDF68B /* Pods-Venues.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Venues.release.xcconfig"; path = "Pods/Target Support Files/Pods-Venues/Pods-Venues.release.xcconfig"; sourceTree = "<group>"; };
 		4A1F38E785753F71A6B4C0E4 /* Pods_Venues.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Venues.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXUIViewController.swift; sourceTree = "<group>"; };
+		AA1E1290212AFB2700F39DB8 /* ExDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDouble.swift; sourceTree = "<group>"; };
 		AA4FFC382122CBAB0007A08B /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		AA4FFC3A2122CDE60007A08B /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		AA4FFC3C2122CED60007A08B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				AACB1E9A2125778C00A51B4B /* ExUIView.swift */,
 				AACB1E9C21271A1800A51B4B /* UIColor.swift */,
 				AA1E128E212AB39500F39DB8 /* EXUIViewController.swift */,
+				AA1E1290212AFB2700F39DB8 /* ExDouble.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Venues/Pods-Venues-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cluster/Cluster.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -312,6 +316,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cluster.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -346,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AACB1E9921256F8400A51B4B /* ExUIImage.swift in Sources */,
+				AA1E1291212AFB2700F39DB8 /* ExDouble.swift in Sources */,
 				AA4FFC422122D0800007A08B /* Icon.swift in Sources */,
 				AA4FFC462122D1640007A08B /* VenueList.swift in Sources */,
 				AA4FFC502122D3530007A08B /* MapPresenter.swift in Sources */,

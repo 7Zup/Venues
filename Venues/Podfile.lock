@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.0)
   - Cluster (2.1.2)
+  - Cosmos (15.0.0)
   - Presentr (1.3)
   - SDWebImage (4.3.2):
     - SDWebImage/Core (= 4.3.2)
@@ -9,6 +10,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Cluster (~> 2.0)
+  - Cosmos (~> 15.0)
   - Presentr (~> 1.3)
   - SDWebImage (~> 4.0)
 
@@ -16,15 +18,17 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Cluster
+    - Cosmos
     - Presentr
     - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
   Cluster: 7ae5f723b1993e59bb7326dad059a7022f181e42
+  Cosmos: a6dbd3d0baa0cc8f51f8598f7508d5a09d0a9ade
   Presentr: 3f0825a42cb32ecd8fc6b6d0b0de87d7d0b42482
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
 
-PODFILE CHECKSUM: b744f1fb7b6cfdccef30e33ae592e97156206c12
+PODFILE CHECKSUM: 50a152017ba3e7c325097d6ecb489deff1874983
 
 COCOAPODS: 1.5.3
