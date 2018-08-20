@@ -114,13 +114,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.firstRefresh = true
     }
     
-    func centerMapOnLocation(location: CLLocation) {
-        
-        let regionRadius: CLLocationDistance = 250
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-    }
-    
     func initClusterManager() {
         
         self.clusterManager.minCountForClustering = 2
@@ -193,6 +186,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     // MARK: - Location Manager Delegate
+    
+    func centerMapOnLocation(location: CLLocation) {
+        
+        let regionRadius: CLLocationDistance = 250
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius, regionRadius)
+        mapView.setRegion(coordinateRegion, animated: false)
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
